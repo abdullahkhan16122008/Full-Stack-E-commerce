@@ -5,7 +5,6 @@ import { Product } from '../models/products.js';
 
 
 
-
 router.post('/products', async (req,res)=>{
   try {
     const product = await new Product({
