@@ -45,7 +45,7 @@ export default function CheckoutPage() {
 
   if (form.paymentMethod === "stripe") {
     const stripe = await stripePromise;
-    const response = await axios.post('http://localhost:3000/api/stripe/create-checkout-session', {
+    const response = await axios.post('https://ecom-backend.onrender.com/api/stripe/create-checkout-session', {
       productName: orderData.productName,
       productPrice: orderData.productPrice,
       productQuantity: orderData.productQuantity,
