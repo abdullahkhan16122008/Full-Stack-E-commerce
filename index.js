@@ -24,21 +24,28 @@ let port = process.env.PORT || 3000;  // Using environment variable for the port
 // Allow requests from your frontend domain
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://mern-stack-e-commerce-eight.vercel.app'
+  'https://mern-stack-e-commerce-gamma.vercel.app',
+  'https://mern-stack-e-commerce-eight.vercel.app' // ✅ your current frontend domain
 ];
 
+// ✅ CORS middleware setup
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl)
+    // Allow requests with no origin (like curl or mobile apps)
     if (!origin) return callback(null, true);
+
+    // Allow if origin is in the allowed list
     if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     } else {
-      return callback(new Error('CORS policy violation'), false);
+      return callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true
+  credentials: true // If you're using cookies/auth headers
 }));
+
+// ✅ This line is necessary to handle preflight OPTIONS requests
+app.options('*', cors());
 
 
 app.use(express.json());
