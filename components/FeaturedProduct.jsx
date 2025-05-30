@@ -14,7 +14,7 @@ const FeaturedProduct = () => {
      
      useEffect(()=>{
        try {
-         axios.post(`http://localhost:3000/api/productlist`).then((response)=>{
+         axios.post(`https://mern-stack-e-commerce-2lqn.onrender.com/api/productlist`).then((response)=>{
            setProducts(response.data)
          })
        } catch (err) {

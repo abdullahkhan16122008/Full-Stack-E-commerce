@@ -45,7 +45,7 @@ export default function CheckoutPage() {
 
   if (form.paymentMethod === "stripe") {
     const stripe = await stripePromise;
-    const response = await axios.post('https://ecom-backend.onrender.com/api/stripe/create-checkout-session', {
+    const response = await axios.post('https://mern-stack-e-commerce-2lqn.onrender.com/api/stripe/create-checkout-session', {
       productName: orderData.productName,
       productPrice: orderData.productPrice,
       productQuantity: orderData.productQuantity,
@@ -59,7 +59,7 @@ export default function CheckoutPage() {
     }
   } else {
     try {
-      await axios.post('https://ecom-backend.onrender.com/api/checkout', orderData);
+      await axios.post('https://mern-stack-e-commerce-2lqn.onrender.com/api/checkout', orderData);
       alert("Order placed successfully!");
       // Optionally: clear form or redirect
     } catch (error) {
@@ -73,7 +73,7 @@ export default function CheckoutPage() {
     form.productPrice = localStorage.getItem("product price");
     form.productQuantity = localStorage.getItem("cart quantity");
     alert("Order placed successfully!");
-    let details = await axios.post('http://localhost:3000/api/checkout', form).then(response => {
+    let details = await axios.post('https://mern-stack-e-commerce-2lqn.onrender.com/api/checkout', form).then(response => {
       console.log(response.data)
     })
     // Implement your logic to handle checkout

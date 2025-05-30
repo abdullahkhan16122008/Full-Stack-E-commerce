@@ -33,25 +33,8 @@ function ProductPage() {
   
   let navigate = useNavigate()
 
-  // useEffect(() => {
       const handleAddToCart = () => {
-      // await axios.post(`http://localhost:3000/api/cart`)
-      //   .then(res => setProduct(res.data))
-      //   .catch(err => console.error(err));
-      // let id = localStorage.setItem(productDetails.productId)
-      // let name = localStorage.setItem(productDetails.productName)
-      // let Price = localStorage.setItem(productDetails.productPrice)
-      // let Image = localStorage.setItem(productDetails.productImage)
       navigate('/cart')
-      // setCartSave([{
-      //   productEmail: localStorage.getItem("userEmail"),
-      //   _id: localStorage.setItem("cart id", cartData._id),
-      //   name: localStorage.setItem("cart name", cartData.name),
-      //   image: localStorage.setItem("cart image", cartData.image),
-      //   price: localStorage.setItem("cart price", cartData.price),
-      //   category: localStorage.setItem("cart category", cartData.category),
-      //   quantity: localStorage.setItem("cart quantity", cartData.quantity),
-      // }])
       setCart([{
         productEmail: localStorage.getItem("userEmail"),
         _id: cartData._id,
@@ -63,10 +46,9 @@ function ProductPage() {
       }])
       }
       console.log(cart)
-    // }, []);
     
 
-  // if (!product) return <div className="p-10 text-center">Loading...</div>;
+  if (!product) return <div className="p-10 text-center">Loading...</div>;
 
   return (
     <>

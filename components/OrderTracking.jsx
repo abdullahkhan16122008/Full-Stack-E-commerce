@@ -10,7 +10,7 @@ const AdminOrdersPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.post("https://ecom-backend.onrender.com/api/orders");
+                const response = await axios.post("https://mern-stack-e-commerce-2lqn.onrender.com/api/orders");
                 setOrders(response.data);
                 console.log(response.data);
             } catch (error) {
