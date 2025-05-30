@@ -21,22 +21,17 @@ let app = express();
 let port = process.env.PORT || 3000;  // Using environment variable for the port
 
 // Middleware setup
+// Allow requests from your frontend domain
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://mern-stack-e-commerce-gamma.vercel.app'
+  'https://mern-stack-e-commerce-eight.vercel.app'
 ];
 
-// ✅ Step 2: Configure CORS middleware
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // if using cookies/auth headers
+  origin: allowedOrigins,
+  credentials: true,
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
