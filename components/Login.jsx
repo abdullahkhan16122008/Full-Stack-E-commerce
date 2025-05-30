@@ -19,7 +19,7 @@ const Login = () => {
     const { credential } = credentialResponse
     
     try {
-      const response = await fetch('https://mern-stack-e-commerce-2lqn.onrender.com/auth/google-login', {
+      const response = await fetch('https://full-stack-e-commerce-gd4t.onrender.com/auth/google-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('https://mern-stack-e-commerce-2lqn.onrender.com/auth/login', {
+      const response = await fetch('https://full-stack-e-commerce-gd4t.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ const AdminOrdersPage = () => {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const response = await axios.post("https://mern-stack-e-commerce-2lqn.onrender.com/api/orders");
+                const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/orders");
                 setOrders(response.data);
             } catch (error) {
                 console.error("Failed to fetch orders", error);
@@ -33,7 +33,7 @@ const AdminOrdersPage = () => {
     const handleSubmit = async (e, orderId, status) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://ecom-backend.onrender.com/api/orders-status", {
+            const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/orders-status", {
                 orderId,
                 status,
             });
@@ -48,7 +48,7 @@ const AdminOrdersPage = () => {
         if (!confirmDelete) return;
 
         try {
-            await axios.delete(`https://ecom-backend.onrender.com/api/orders/${orderId}`);
+            await axios.delete(`https://full-stack-e-commerce-gd4t.onrender.com/api/orders/${orderId}`);
             setOrders((prevOrders) => prevOrders.filter((order) => order._id !== orderId));
             alert("Order deleted successfully");
         } catch (error) {

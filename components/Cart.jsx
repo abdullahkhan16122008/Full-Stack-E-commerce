@@ -42,7 +42,7 @@ const Cart = () => {
     }
   ])
   useEffect(()=>{
-    axios.post('https://mern-stack-e-commerce-2lqn.onrender.com/api/cart',cartSave)
+    axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/cart',cartSave)
   },[])
   console.log(cartSave)
 
