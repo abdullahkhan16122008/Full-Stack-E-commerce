@@ -15,7 +15,7 @@ function ProductListPage() {
   
   useEffect(()=>{
     try {
-      axios.post(`http://localhost:3000/api/productlist`).then((response)=>{
+      axios.post(`https://ecom-backend.onrender.com/api/productlist`).then((response)=>{
         setProducts(response.data)
       })
     } catch (err) {
