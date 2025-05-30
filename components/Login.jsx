@@ -19,7 +19,7 @@ const Login = () => {
     const { credential } = credentialResponse
     
     try {
-      const response = await fetch('http://localhost:3000/auth/google-login', {
+      const response = await fetch('https://ecom-backend.onrender.com/auth/google-login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch('https://ecom-backend.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
