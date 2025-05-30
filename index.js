@@ -21,7 +21,10 @@ let app = express();
 let port = process.env.PORT || 3000;  // Using environment variable for the port
 
 // Middleware setup
-app.use(cors());
+app.use(cors({
+  origin: 'https://mern-stack-e-commerce-gamma.vercel.app',
+  credentials: true, // optional: if you're using cookies or authorization headers
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
