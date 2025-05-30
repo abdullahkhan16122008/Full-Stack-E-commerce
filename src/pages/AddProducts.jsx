@@ -31,7 +31,7 @@ export default function AddProduct() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://ecom-backend.onrender.com/api/products", product, {
+      const response = await axios.post("https://mern-stack-e-commerce-2lqn.onrender.com/api/products", product, {
         headers: { "Content-Type": "application/json" },
       });
       setSuccess("Product added successfully!");
