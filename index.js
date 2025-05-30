@@ -25,7 +25,10 @@ let port = process.env.PORT || 3000;  // Using environment variable for the port
 // ✅ These are the only domains that should access your API
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://mern-stack-e-commerce-eight.vercel.app'
+  'http://localhost:5173',
+  'https://mern-stack-e-commerce-eight.vercel.app',
+  'https://mern-stack-e-commerce-qi7e.onrender.com',
+  'https://full-stack-e-commerce-gd4t.onrender.com'
 ];
 
 // ✅ CORS configuration
