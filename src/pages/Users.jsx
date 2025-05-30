@@ -24,7 +24,7 @@ const Users = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:3000/api/users');
+        const response = await axios.post('https://ecom-backend.onrender.com/api/users');
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -35,7 +35,7 @@ const Users = () => {
   const deleteUser = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:3000/api/users/${id}`);
+      await axios.delete(`https://ecom-backend.onrender.com/api/users/${id}`);
       // Filter out the deleted user from state
       setUsers(users.filter((u) => u._id !== id));
     } catch (error) {
