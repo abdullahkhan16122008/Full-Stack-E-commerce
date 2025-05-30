@@ -42,7 +42,7 @@ const Cart = () => {
     }
   ])
   useEffect(()=>{
-    axios.post('http://localhost:3000/api/cart',cartSave)
+    axios.post('https://ecom-backend.onrender.com/api/products/api/cart',cartSave)
   },[])
   console.log(cartSave)
 
