@@ -59,7 +59,7 @@ export default function CheckoutPage() {
     }
   } else {
     try {
-      await axios.post('http://localhost:3000/api/checkout', orderData);
+      await axios.post('https://ecom-backend.onrender.com/api/checkout', orderData);
       alert("Order placed successfully!");
       // Optionally: clear form or redirect
     } catch (error) {
