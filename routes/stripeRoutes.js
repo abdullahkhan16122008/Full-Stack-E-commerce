@@ -29,8 +29,8 @@ router.post('/create-checkout-session', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:5173/success',
-      cancel_url: 'http://localhost:5173/cancel',
+      success_url: 'https://mern-stack-e-commerce-eight.vercel.app/',
+      cancel_url: 'https://mern-stack-e-commerce-eight.vercel.app/',
     });
 
     res.json({ id: session.id });

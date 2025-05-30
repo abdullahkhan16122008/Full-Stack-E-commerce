@@ -12,7 +12,7 @@ import handleGoogleLogin from './routes/handleGoogleLogin.js'
 import cartRoute from './routes/cartRoute.js'
 import checkoutRoute from './routes/checkoutRoute.js'
 import usersRoute from './routes/usersRoute.js'
-import stripeRoutes from './routes/stripe.js';
+import stripeRoutes from './routes/stripeRoutes.js';
 
 
 dotenv.config();
@@ -46,7 +46,7 @@ app.use('/api', productRoute);
 app.use('/api', cartRoute);
 app.use('/api', usersRoute);
 app.use('/api', checkoutRoute);
-app.use('/auth/google', handleGoogleLogin);  // Google OAuth route
+app.use('/auth', handleGoogleLogin);  // Google OAuth route
 app.use('/api/stripe', stripeRoutes);
 
 // Start the server
