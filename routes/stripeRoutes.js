@@ -30,7 +30,7 @@ router.post('/create-checkout-session', async (req, res) => {
       ],
       mode: 'payment',
       success_url: 'https://mern-stack-e-commerce-qi7e.onrender.com/home',
-      cancel_url: 'https://mern-stack-e-commerce-qi7e.onrender.com/checkout',
+      cancel_url: 'https://mern-stack-e-commerce-qi7e.onrender.com/home',
     });
 
     res.json({ id: session.id });
