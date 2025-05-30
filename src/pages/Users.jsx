@@ -24,7 +24,7 @@ const Users = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('https://ecom-backend.onrender.com/api/users');
+        const response = await axios.post('https://mern-stack-e-commerce-2lqn.onrender.com/api/users');
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);
