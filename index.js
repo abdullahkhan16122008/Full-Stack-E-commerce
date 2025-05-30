@@ -21,31 +21,29 @@ let app = express();
 let port = process.env.PORT || 3000;  // Using environment variable for the port
 
 // Middleware setup
-// Allow requests from your frontend domain
+
+// ✅ These are the only domains that should access your API
 const allowedOrigins = [
   'http://localhost:3000',
   'https://mern-stack-e-commerce-gamma.vercel.app',
-  'https://mern-stack-e-commerce-eight.vercel.app' // ✅ your current frontend domain
+  'https://mern-stack-e-commerce-eight.vercel.app'
 ];
 
-// ✅ CORS middleware setup
-app.use(cors({
+// ✅ CORS configuration
+const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like curl or mobile apps)
-    if (!origin) return callback(null, true);
-
-    // Allow if origin is in the allowed list
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
     } else {
-      return callback(new Error('Not allowed by CORS'));
+      callback(new Error('CORS error: Not allowed'));
     }
   },
-  credentials: true // If you're using cookies/auth headers
-}));
+  credentials: true, // if using cookies or auth headers
+};
 
-// ✅ This line is necessary to handle preflight OPTIONS requests
-app.options('*', cors());
+// ✅ Apply middleware
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // preflight support
 
 
 app.use(express.json());
