@@ -31,19 +31,20 @@ export default function CheckoutPage() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+  const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-    const orderData = {
-      ...form,
-      productId: localStorage.getItem("product id"),
-      productName: localStorage.getItem("product name"),
-      productPrice: Number(localStorage.getItem("product price")),
-      productQuantity: Number(localStorage.getItem("cart quantity")),
-    };
+  const orderData = {
+    ...form,
+    productId: localStorage.getItem("product id"),
+    productName: localStorage.getItem("product name"),
+    productPrice: Number(localStorage.getItem("product price")),
+    productQuantity: Number(localStorage.getItem("cart quantity")),
+  };
 
-    if (form.paymentMethod === "stripe") {
+  if (form.paymentMethod === "stripe") {
+    try {
       const stripe = await stripePromise;
       const response = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/stripe/create-checkout-session', {
         productName: orderData.productName,
@@ -57,27 +58,20 @@ export default function CheckoutPage() {
       if (result.error) {
         console.error(result.error.message);
       }
-    } else {
-      try {
-        await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/checkout', orderData);
-        alert("Order placed successfully!");
-        // Optionally: clear form or redirect
-      } catch (error) {
-        console.error("Checkout failed", error);
-        alert("Order failed!");
-      }
+    } catch (err) {
+      console.error("Stripe session creation failed:", err.response?.data || err.message);
+      alert("Stripe checkout failed.");
     }
-
-    form.productId = localStorage.getItem("product id");
-    form.productName = localStorage.getItem("product name");
-    form.productPrice = localStorage.getItem("product price");
-    form.productQuantity = localStorage.getItem("cart quantity");
-    alert("Order placed successfully!");
-    let details = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/checkout', form).then(response => {
-      console.log(response.data)
-    })
-    // Implement your logic to handle checkout
-  };
+  } else {
+    try {
+      await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/checkout', orderData);
+      alert("Order placed successfully!");
+    } catch (error) {
+      console.error("Checkout failed", error.response?.data || error.message);
+      alert("Order failed!");
+    }
+  }
+};
 
 
 
