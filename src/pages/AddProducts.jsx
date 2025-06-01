@@ -22,21 +22,21 @@ export default function AddProduct() {
   const [previewUrl, setPreviewUrl] = useState(null);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    let file = e.target.files[0];
+   const { name, value, type, checked } = e.target;
 
-    if (type === 'file') {
-  setProduct(prev => ({
-    ...prev,
-    image: file
-  }));
-  setPreviewUrl(URL.createObjectURL(file));
-} else {
-  setProduct(prev => ({
-    ...prev,
-    [name]: type === 'checkbox' ? checked : value
-  }));
-}
+  if (type === "file") {
+    const file = e.target.files[0]; // ✅ Only access files if it’s a file input
+    setProduct((prev) => ({
+      ...prev,
+      image: file,
+    }));
+    setPreviewUrl(URL.createObjectURL(file));
+  } else {
+    setProduct((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  }
   };
 
   const handleSubmit = async (e) => {
