@@ -25,20 +25,28 @@ export default function AddProduct() {
     const { name, value, type, checked } = e.target;
     let file = e.target.files[0];
 
-    setProduct((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-      image: file,
-    }));
-    setPreviewUrl(URL.createObjectURL(file));
+    if (type === 'file') {
+  setProduct(prev => ({
+    ...prev,
+    image: file
+  }));
+  setPreviewUrl(URL.createObjectURL(file));
+} else {
+  setProduct(prev => ({
+    ...prev,
+    [name]: type === 'checkbox' ? checked : value
+  }));
+}
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/products", product, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const formData = new FormData();
+Object.entries(product).forEach(([key, value]) => {
+  formData.append(key, value);
+});
+      const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/products",  formData);
       setSuccess("Product added successfully!");
       setError("");
       setProduct({
@@ -59,7 +67,7 @@ export default function AddProduct() {
 
   let navigate = useNavigate()
   const [user, setUser] = useState('')
-  useEffect(async () => {
+  useEffect(() => {
     let role = localStorage.getItem("userRole")
     if (role == "user") {
       setUser('user')
@@ -108,7 +116,7 @@ export default function AddProduct() {
           <img src={previewUrl} alt="Preview" className="w-64 rounded shadow" />
         </div>
       )}
-          <input type="file" name="image" value={product.image} onChange={handleChange} placeholder="Image URL" className="p-2 border rounded" />
+          <input type="file" name="image" onChange={handleChange} placeholder="Image URL" className="p-2 border rounded" />
           <textarea name="description" value={product.description} onChange={handleChange} placeholder="Product Description" className="p-2 border rounded" />
           <label className="flex items-center gap-2">
             <input type="checkbox" name="availablity" checked={product.availablity} onChange={handleChange} />
