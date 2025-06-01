@@ -74,11 +74,11 @@ const SignUp = () => {
 
         if(signUpData.role === 'user'){
           alert('Signup successful! You can now login.');
-          navigate('/home');
+          navigate('/');
     }
     else if(signUpData.role === 'admin'){
         alert('Signup successful! You can now login.');
-        navigate('/admin-dashboard');
+        navigate('/');
       }
       else {
         alert(result.message || 'Signup failed');
