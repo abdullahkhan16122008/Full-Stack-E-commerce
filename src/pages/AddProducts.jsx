@@ -19,13 +19,18 @@ export default function AddProduct() {
 
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    let file = e.target.files[0];
+
     setProduct((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
+      image: file,
     }));
+    setPreviewUrl(URL.createObjectURL(file));
   };
 
   const handleSubmit = async (e) => {
@@ -42,7 +47,7 @@ export default function AddProduct() {
         rating: "",
         availablity: true,
         category: "",
-        image: "",
+        image: null,
         description: "",
       });
     } catch (err) {
@@ -52,21 +57,21 @@ export default function AddProduct() {
     }
   };
 
-   let navigate = useNavigate()
+  let navigate = useNavigate()
   const [user, setUser] = useState('')
-  useEffect( async () => {
+  useEffect(async () => {
     let role = localStorage.getItem("userRole")
-    if(role == "user"){
+    if (role == "user") {
       setUser('user')
     }
-    if (role == "admin"){
-           setUser('admin')
+    if (role == "admin") {
+      setUser('admin')
     }
   }, [])
-  
+
   return (
     <div className="flex min-h-screen bg-gray-100">
-    {user == 'user'?<NotFound />:""}
+      {user == 'user' ? <NotFound /> : ""}
       <aside className="w-64 bg-green-700 text-white flex flex-col py-6 px-4 shadow-xl">
         <h1 className="text-2xl font-bold text-center mb-10">Admin Panel</h1>
         <nav className="flex flex-col space-y-4">
@@ -97,7 +102,13 @@ export default function AddProduct() {
           <input type="number" name="price" value={product.price} onChange={handleChange} placeholder="Price" className="p-2 border rounded" required />
           <input type="number" step="0.1" name="rating" value={product.rating} onChange={handleChange} placeholder="Rating" className="p-2 border rounded" />
           <input type="text" name="category" value={product.category} onChange={handleChange} placeholder="Category" className="p-2 border rounded" required />
-          <input type="text" name="image" value={product.image} onChange={handleChange} placeholder="Image URL" className="p-2 border rounded" />
+          {previewUrl && (
+        <div className="mt-4">
+          <p>Preview:</p>
+          <img src={previewUrl} alt="Preview" className="w-64 rounded shadow" />
+        </div>
+      )}
+          <input type="file" name="image" value={product.image} onChange={handleChange} placeholder="Image URL" className="p-2 border rounded" />
           <textarea name="description" value={product.description} onChange={handleChange} placeholder="Product Description" className="p-2 border rounded" />
           <label className="flex items-center gap-2">
             <input type="checkbox" name="availablity" checked={product.availablity} onChange={handleChange} />

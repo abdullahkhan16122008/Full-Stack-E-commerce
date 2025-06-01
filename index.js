@@ -13,6 +13,7 @@ import cartRoute from './routes/cartRoute.js'
 import checkoutRoute from './routes/checkoutRoute.js'
 import usersRoute from './routes/usersRoute.js'
 import stripeRoutes from './routes/stripeRoutes.js';
+import fileUpload from "express-fileupload";
 
 
 dotenv.config();
@@ -22,6 +23,10 @@ let port = process.env.PORT || 3000;  // Using environment variable for the port
 
 // Middleware setup
 
+
+app.use(fileUpload({
+  useTempFiles: true
+}))
 // ✅ These are the only domains that should access your API
 const allowedOrigins = [
   'http://localhost:3000',
