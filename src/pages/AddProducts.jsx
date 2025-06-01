@@ -79,7 +79,7 @@ Object.entries(product).forEach(([key, value]) => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      {user == 'user' ? <NotFound /> : ""}
+      {user == 'user' ? <NotFound /> : null}
       <aside className="w-64 bg-green-700 text-white flex flex-col py-6 px-4 shadow-xl">
         <h1 className="text-2xl font-bold text-center mb-10">Admin Panel</h1>
         <nav className="flex flex-col space-y-4">
