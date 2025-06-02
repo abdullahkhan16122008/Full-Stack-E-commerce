@@ -60,17 +60,11 @@ const Login = () => {
     let result;
 
     try {
-      const response = await fetch('https://full-stack-e-commerce-gd4t.onrender.com/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginInfo)
-      });
+      const response = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/auth/login', loginInfo);
 
-      result = await response.json();
+      result = response;
       const { success, message, jwtToken, name, email, role, username } = result
-      if (result) {
+      if (result.success) {
         alert('Login successful!');
         localStorage.setItem('token', jwtToken)
         localStorage.setItem('loggedInUser', name)
