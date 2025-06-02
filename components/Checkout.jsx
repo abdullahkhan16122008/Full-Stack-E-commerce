@@ -50,7 +50,7 @@ export default function CheckoutPage() {
       const response = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/stripe/create-checkout-session', {
         productName: orderData.productName,
         productPrice: orderData.productPrice,
-        username: orderData.user,
+        username: orderData.username,
         productQuantity: orderData.productQuantity,
       });
 

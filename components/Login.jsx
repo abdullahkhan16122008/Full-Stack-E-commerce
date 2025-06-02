@@ -57,6 +57,8 @@ const Login = () => {
       return;
     }
 
+    let result;
+
     try {
       const response = await fetch('https://full-stack-e-commerce-gd4t.onrender.com/auth/login', {
         method: 'POST',
@@ -66,12 +68,13 @@ const Login = () => {
         body: JSON.stringify(loginInfo)
       });
 
-      const result = await response.json();
-      const { success, message, jwtToken, name, email, role } = result
+      result = await response.json();
+      const { success, message, jwtToken, name, email, role, username } = result
       if (result.success) {
         alert('Login successful!');
         localStorage.setItem('token', jwtToken)
         localStorage.setItem('loggedInUser', name)
+        localStorage.setItem('username', username)
         localStorage.setItem('userEmail', email)
         localStorage.setItem('userRole', role)
 

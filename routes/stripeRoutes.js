@@ -12,7 +12,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY); // Replace with your a
 
 router.post('/create-checkout-session', async (req, res) => {
   try {
-    const { productName, productPrice, productQuantity } = req.body;
+    const { productName, productPrice, productQuantity, username } = req.body;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -26,6 +26,7 @@ router.post('/create-checkout-session', async (req, res) => {
             unit_amount: productPrice * 100, // Stripe works in cents
           },
           quantity: productQuantity,
+          username: username,
         },
       ],
       mode: 'payment',

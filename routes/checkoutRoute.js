@@ -7,6 +7,7 @@ router.post('/checkout', async (req,res)=>{
     try {
         let Order = await new order({
             fullName: req.body.fullName,
+            username: req.body.username,
             email: req.body.email,
             address: req.body.address,
             city: req.body.city,
@@ -29,7 +30,8 @@ router.post('/checkout', async (req,res)=>{
 
 router.post('/orders', async (req,res)=>{
     try {
-        let Orders = await order.find()
+        let {username} = req.body;
+        let Orders = await order.find({username: username})
             res.json(Orders)
     } catch (err) {
         res.status(500).json({

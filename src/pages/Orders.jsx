@@ -11,8 +11,9 @@ const AdminOrdersPage = () => {
 
     useEffect(() => {
         const fetchOrders = async () => {
+            let username = localStorage.getItem('username')
             try {
-                const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/orders");
+                const response = await axios.post("https://full-stack-e-commerce-gd4t.onrender.com/api/orders", {username});
                 setOrders(response.data);
             } catch (error) {
                 console.error("Failed to fetch orders", error);
