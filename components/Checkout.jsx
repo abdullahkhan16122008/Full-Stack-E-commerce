@@ -57,7 +57,7 @@ export default function CheckoutPage() {
       const session = response.data;
       const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
-      if (result.error) {
+      if (!result) {
         console.error(result.error.message);
       }
     } catch (err) {
