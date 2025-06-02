@@ -110,7 +110,7 @@ if (user === 'user') return <NotFound />;
         {error && <p className="text-red-600 text-center mb-4">{error}</p>}
         <form onSubmit={handleSubmit} className="grid gap-4">
           <input type="text" name="name" value={product.name} onChange={handleChange} placeholder="Product Name" className="p-2 border rounded" required />
-          <input type="text" name="name" value={product.username} onChange={handleChange} placeholder="Product Name" className="p-2 border rounded" required />
+          <input type="text" name="username" value={product.username} onChange={handleChange} placeholder="userame" className="p-2 border rounded" required />
           <input type="number" name="price" value={product.price} onChange={handleChange} placeholder="Price" className="p-2 border rounded" required />
           <input type="number" step="0.1" name="rating" value={product.rating} onChange={handleChange} placeholder="Rating" className="p-2 border rounded" />
           <input type="text" name="category" value={product.category} onChange={handleChange} placeholder="Category" className="p-2 border rounded" required />
