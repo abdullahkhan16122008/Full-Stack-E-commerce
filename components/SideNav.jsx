@@ -5,6 +5,10 @@ import { FaTachometerAlt, FaUsers, FaBox, FaSignOutAlt, FaSquare, FaShip, FaTruc
 
 
 const SideNav = () => {
+    let handleLogout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userRole')
+  }
     return (
         <>
             {/* Sidebar */}
@@ -24,7 +28,7 @@ const SideNav = () => {
                     <Link to="/admin-dashboard/orders" className="flex items-center gap-3 hover:bg-green-600 px-4 py-2 rounded">
                         <FaTruck /> Orders
                     </Link>
-                    <Link to="/logout" className="flex items-center gap-3 hover:bg-red-600 px-4 py-2 rounded mt-auto">
+                    <Link to="/" onClick={handleLogout} className="flex items-center gap-3 hover:bg-red-600 px-4 py-2 rounded mt-auto">
                         <FaSignOutAlt /> Logout
                     </Link>
                 </nav>

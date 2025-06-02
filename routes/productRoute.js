@@ -32,6 +32,7 @@ router.post('/products', async (req,res)=>{
   try {
     const product = await new Product({
       name: req.body.name,
+      username: req.body.username,
       price: req.body.price,
       rating: req.body.rating,
       available: req.body.availabile,
