@@ -23,10 +23,9 @@ router.post('/create-checkout-session', async (req, res) => {
             product_data: {
               name: productName,
             },
-            unit_amount: productPrice * 100, // Stripe works in cents
+            unit_amount: productPrice * 100,
           },
           quantity: productQuantity,
-          username: username,
         },
       ],
       mode: 'payment',
