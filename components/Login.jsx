@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import Navbar from './Navbar';
+import axios from 'axios';
+
 
 
 const Login = () => {
@@ -62,9 +64,9 @@ const Login = () => {
     try {
       const response = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/auth/login', loginInfo);
 
-      result = response;
+      result = response.data;
       const { success, message, jwtToken, name, email, role, username } = result
-      if (result.success) {
+      if (result && result.success === true) {
         alert('Login successful!');
         localStorage.setItem('token', jwtToken)
         localStorage.setItem('loggedInUser', name)
@@ -79,7 +81,7 @@ const Login = () => {
           navigate('/admin-dashboard')
         }
       } else {
-        alert(result.messege || 'Signup failed');
+        alert(result.messege || 'login failed');
       }
     } catch (err) {
       alert('Server Issue');
