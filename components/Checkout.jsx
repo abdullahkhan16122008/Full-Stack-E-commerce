@@ -39,6 +39,7 @@ export default function CheckoutPage() {
     ...form,
     productId: localStorage.getItem("product id"),
     productName: localStorage.getItem("product name"),
+    username: localStorage.getItem("username"),
     productPrice: Number(localStorage.getItem("product price")),
     productQuantity: Number(localStorage.getItem("cart quantity")),
   };
@@ -49,6 +50,7 @@ export default function CheckoutPage() {
       const response = await axios.post('https://full-stack-e-commerce-gd4t.onrender.com/api/stripe/create-checkout-session', {
         productName: orderData.productName,
         productPrice: orderData.productPrice,
+        username: orderData.user,
         productQuantity: orderData.productQuantity,
       });
 
