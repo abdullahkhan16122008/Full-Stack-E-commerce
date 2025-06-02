@@ -57,7 +57,6 @@ const login = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await signUp.findOne({ email });
-    const role = await user.role;
 
     if (!user) {
       return res.status(403).json({
