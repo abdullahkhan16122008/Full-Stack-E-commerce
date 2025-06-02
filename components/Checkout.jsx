@@ -58,7 +58,7 @@ export default function CheckoutPage() {
       const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
       if (!result) {
-        console.error(result.error.message);
+        console.error('Strip error');
       }
     } catch (err) {
       console.error("Stripe session creation failed:", err.response?.data || err.message);
