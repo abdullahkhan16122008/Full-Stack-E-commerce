@@ -57,7 +57,7 @@ function ProductPage() {
     <div className="max-w-5xl mx-auto py-10 grid md:grid-cols-2 gap-10">
       <img src={productDetails.productImage} alt={productDetails.productName} className="w-full h-auto rounded-xl shadow" />
       <div>
-        <h1 className="text-3xl font-bold">{productDetails.username}</h1>
+        <h1 className="text-1xl font-medium">{productDetails.username}</h1>
         <h1 className="text-3xl font-bold">{productDetails.productName}</h1>
         <p className="text-xl text-blue-600 mt-2">${productDetails.productPrice}</p>
         <p className="mt-4 text-gray-700">{productDetails.productDescription}</p>
