@@ -10,9 +10,16 @@ const signup = async (req, res) => {
 
     // Check if user already exists
     const existingUser = await signUp.findOne({ email });
+    const existingUsername = await signUp.findOne({ username });
     if (existingUser) {
       return res.status(409).json({
-        message: "User already exists, you can login",
+        message: "Email already exists, you can login",
+        success: false,
+      });
+    }
+    if (existingUsername) {
+      return res.status(409).json({
+        message: "Username already exists, you can login",
         success: false,
       });
     }

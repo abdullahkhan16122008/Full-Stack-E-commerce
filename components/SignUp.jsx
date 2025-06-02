@@ -79,7 +79,7 @@ const SignUp = () => {
     }
     else if(signUpData.role === 'admin'){
         alert('Signup successful! You can now login.');
-        navigate('/admin-dashboard');
+        navigate('/');
       }
       else {
         alert(result.message || 'Signup failed');
