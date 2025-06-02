@@ -42,6 +42,7 @@ export default function AddProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    alert('added successfully')
     try {
       const formData = new FormData();
 Object.entries(product).forEach(([key, value]) => {
