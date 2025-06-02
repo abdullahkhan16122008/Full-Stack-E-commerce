@@ -70,7 +70,7 @@ const Login = () => {
 
       result = await response.json();
       const { success, message, jwtToken, name, email, role, username } = result
-      if (result.success) {
+      if (result) {
         alert('Login successful!');
         localStorage.setItem('token', jwtToken)
         localStorage.setItem('loggedInUser', name)
