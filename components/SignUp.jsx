@@ -117,12 +117,12 @@ const SignUp = () => {
           <div>
             <label className="block mb-1 text-gray-700 font-semibold">Username</label>
             <input
-              onChange={handleChange}
               value={signUpData.username}
+              onChange={handleChange}
               type="text"
-              name="name"
+              name="username"
               required
-              placeholder="Enter your name"
+              placeholder="Enter your username"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition duration-300"
             />
           </div>
