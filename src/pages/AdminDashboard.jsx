@@ -39,7 +39,7 @@ const AdminDashboard = () => {
           <Link to="/admin-dashboard/orders" className="flex items-center gap-3 hover:bg-green-600 px-4 py-2 rounded">
             <FaTruck /> Orders
           </Link>
-          <Link to="/logout" className="flex items-center gap-3 hover:bg-red-600 px-4 py-2 rounded mt-auto">
+          <Link to="/" className="flex items-center gap-3 hover:bg-red-600 px-4 py-2 rounded mt-auto">
             <FaSignOutAlt /> Logout
           </Link>
         </nav>

@@ -5,6 +5,7 @@ import Joi from "joi";
 const signUpValidation = (req, res, next) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(100).required(),
+        username: Joi.string().min(3).max(100).required(),
         email: Joi.string().email().required(),
         password: Joi.string().min(7).max(100).required(),
         role: Joi.string().required()

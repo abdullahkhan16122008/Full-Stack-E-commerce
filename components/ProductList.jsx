@@ -96,6 +96,7 @@ const filteredProducts = products.filter((product) => {
               name: product.name,
             }])  
             localStorage.setItem('product name', product.name)  
+            localStorage.setItem('username', product.username)  
             localStorage.setItem('product rating', product.rating)  
             localStorage.setItem('product price', product.price)  
             localStorage.setItem('product available', product.available)  

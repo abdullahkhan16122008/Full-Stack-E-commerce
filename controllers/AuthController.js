@@ -6,7 +6,7 @@ const ERR_MSG = "Wrong password or email";
 
 const signup = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, username, email, password, role } = req.body;
 
     // Check if user already exists
     const existingUser = await signUp.findOne({ email });
@@ -23,6 +23,7 @@ const signup = async (req, res) => {
     // Create new user
     const newUser = new signUp({
       name,
+      username,
       email,
       password: hashedPassword,
       role,
@@ -67,7 +68,7 @@ const login = async (req, res) => {
     }
 
     const jwtToken = jwt.sign(
-      { email: user.email, _id: user._id, role: user.role },
+      { email: user.email, _id: user._id, role: user.role, username: user.username },
       process.env.JWT_SECRET,
       { expiresIn: "24h" }
     );
@@ -77,6 +78,7 @@ const login = async (req, res) => {
       jwtToken,
       email: user.email,
       name: user.name,
+      username: username.name,
       role: user.role,
     });
   } catch (err) {
